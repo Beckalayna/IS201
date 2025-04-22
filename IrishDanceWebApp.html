@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irish Dance Adventure</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e6f7e6;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2e8b57;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .scene {
+            margin-bottom: 30px;
+        }
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .choice {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .choice:hover {
+            background-color: #3e8e41;
+            transform: translateY(-2px);
+        }
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .restart {
+            margin-top: 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .hidden {
+            display: none;
+        }
+        .ending {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #d32f2f;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .header-image {
+            width: 100%;
+            height: 200px;
+            background-color: #4caf50;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-image">Irish Dance Adventure</div>
+        <h1>Choose Your Irish Dance Adventure</h1>
+        
+        <!-- Start Scene -->
+        <div id="start" class="scene">
+            <p class="story-text">Welcome to the world of Irish Dance! You've just joined a dance school and are excited to begin your journey. The instructor asks about your goals.</p>
+            <div class="choices">
+                <button class="choice" onclick="showScene('competition')">Practice for competition</button>
+                <button class="choice" onclick="showScene('fun')">Practice for fun</button>
+            </div>
+        </div>
+        
+        <!-- Competition Path -->
+        <div id="competition" class="scene hidden">
+            <p class="story-text">You've decided to train for competition! The instructor recommends learning a solo dance. Which style would you prefer?</p>
+            <div class="choices">
+                <button class="choice" onclick="showScene('reel')">Reel</button>
+                <button class="choice" onclick="showScene('jig')">Jig</button>
+            </div>
+        </div>
+        
+        <!-- Fun Path -->
+        <div id="fun" class="scene hidden">
+            <p class="story-text">Dancing for fun is a great choice! The instructor suggests learning a ceili dance (group dance). Which one interests you?</p>
+            <div class="choices">
+                <button class="choice" onclick="showScene('fairy-reel')">Fairy Reel</button>
+                <button class="choice" onclick="showScene('trip-cottage')">Trip to the Cottage</button>
+            </div>
+        </div>
+        
+        <!-- Fairy Reel Path -->
+        <div id="fairy-reel" class="scene hidden">
+            <p class="story-text">While practicing the Fairy Reel, you notice a strange shimmer in the air. It appears to be a magic portal to Leprechaun Land! Do you dare to enter?</p>
+            <div class="choices">
+                <button class="choice" onclick="showScene('portal-yes')">Yes, enter the portal</button>
+                <button class="choice" onclick="showScene('portal-no')">No, continue dancing</button>
+            </div>
+        </div>
+        
+        <!-- Trip to the Cottage Path -->
+        <div id="trip-cottage" class="scene hidden">
+            <p class="story-text">Learning the Trip to the Cottage is fun, but your dance partner keeps skipping practice. What will you do?</p>
+            <div class="choices">
+                <button class="choice" onclick="showScene('skip-too')">Skip practice too</button>
+                <button class="choice" onclick="showScene('invite-back')">Invite your partner back</button>
+            </div>
+        </div>
+        
+        <!-- Reel Path -->
+        <div id="reel" class="scene hidden">
+            <p class="story-text">The day of the competition arrives! You're ready to perform your reel, but the musician starts playing much faster than you practiced. What will you do?</p>
+            <div class="choices">
+                <button class="choice" onclick="showScene('dance-anyway')">Dance anyway at the faster tempo</button>
+                <button class="choice" onclick="showScene('ask-slower')">Ask the musician to play slower</button>
+            </div>
+        </div>
+        
+        <!-- Jig Path -->
+        <div id="jig" class="scene hidden">
+            <p class="story-text">You need to decide which type of jig to perform at the competition. Your instructor says you're good at both, but you need to choose one.</p>
+            <div class="choices">
+                <button class="choice" onclick="showScene('slip-jig')">Slip Jig</button>
+                <button class="choice" onclick="showScene('treble-jig')">Treble Jig</button>
+            </div>
+        </div>
+        
+        <!-- Endings -->
+        <div id="portal-yes" class="scene hidden">
+            <p class="story-text">You step through the portal and find yourself in a magical realm! The leprechauns are impressed with your Fairy Reel and crown you as their dance champion.</p>
+            <div class="ending">You live happily ever after in Leprechaun Land, teaching Irish dance to magical creatures!</div>
+            <button class="restart" onclick="showScene('start')">Start Over</button>
+        </div>
+        
+        <div id="portal-no" class="scene hidden">
+            <p class="story-text">You decide to continue with your dance class and ignore the portal. Unfortunately, you're paired with a new partner who has terrible body odor.</p>
+            <div class="ending">Every practice becomes a test of your endurance as you try not to gag from your partner's BO!</div>
+            <button class="restart" onclick="showScene('start')">Start Over</button>
+        </div>
+        
+        <div id="skip-too" class="scene hidden">
+            <p class="story-text">You decide to skip practice too. Without proper training and supervision, your technique suffers. During your next practice, you attempt a difficult move.</p>
+            <div class="ending">Ouch! You break your leg due to poor technique and have to take months off from dancing!</div>
+            <button class="restart" onclick="showScene('start')">Start Over</button>
+        </div>
+        
+        <div id="invite-back" class="scene hidden">
+            <p class="story-text">You reach out to your partner and convince them to return to practice. As you work together on the Trip to the Cottage, you develop a special connection.</p>
+            <div class="ending">Your dance partnership blossoms into romance, and you fall in love!</div>
+            <button class="restart" onclick="showScene('start')">Start Over</button>
+        </div>
+        
+        <div id="dance-anyway" class="scene hidden">
+            <p class="story-text">You take a deep breath and dance to the faster tempo. Your adaptability and confidence impress the judges, who note your exceptional skill.</p>
+            <div class="ending">Congratulations! You win the competition with your amazing performance!</div>
+            <button class="restart" onclick="showScene('start')">Start Over</button>
+        </div>
+        
+        <div id="ask-slower" class="scene hidden">
+            <p class="story-text">You politely ask the musician to slow down. They comply, but the change in tempo throws off your rhythm. As you dance, your shoes catch on the stage.</p>
+            <div class="ending">Oh no! You slip on stage in front of everyone!</div>
+            <button class="restart" onclick="showScene('start')">Start Over</button>
+        </div>
+        
+        <div id="slip-jig" class="scene hidden">
+            <p class="story-text">You perform your slip jig with grace and precision, but the judges seem to prefer other styles this year.</p>
+            <div class="ending">Unfortunately, you come in last place in the competition.</div>
+            <button class="restart" onclick="showScene('start')">Start Over</button>
+        </div>
+        
+        <div id="treble-jig" class="scene hidden">
+            <p class="story-text">Your treble jig performance is excellent, earning you a high score. However, your best friend delivers an absolutely stunning performance!</p>
+            <div class="ending">Your best friend wins first place, and you're genuinely happy for them!</div>
+            <button class="restart" onclick="showScene('start')">Start Over</button>
+        </div>
+    </div>
+
+    <script>
+        function showScene(sceneId) {
+            // Hide all scenes
+            document.querySelectorAll('.scene').forEach(scene => {
+                scene.classList.add('hidden');
+            });
+            
+            // Show the requested scene
+            document.getElementById(sceneId).classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
